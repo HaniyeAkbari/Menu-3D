@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(../pics/2Bap.gif);
+}
+
+.gallery {
+  width: 100%;
+  perspective: 3000px;
+  margin-top: 60px;
+}
+.gallery > .container {
+  position: relative;
+  margin-top: 10px;
+  transform-style: preserve-3d;
+  animation: rotation 20s linear infinite;
+  transition: 1s;
+}
+.gallery > .container:hover {
+  animation-play-state: paused;
+  transform: none;
+}
+.gallery > .container > figure {
+  width: 35%;
+  height: 350px;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 32.5%;
+}
+.gallery > .container > figure::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.404);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 0.6s;
+}
+.gallery > .container > figure::after {
+  position: absolute;
+  width: 0;
+  height: 20%;
+  text-align: center;
+  color: white;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.715);
+  top: 250px;
+  left: 0;
+  font-size: 50px;
+  padding-top: 20px;
+  transition-property: top, color;
+  transition-duration: 0.6s, 0.5s;
+  transition-delay: 0s, 0.6s;
+  z-index: -2;
+  overflow: hidden;
+}
+.gallery > .container > figure:nth-of-type(1)::after {
+  content: "Starter";
+}
+.gallery > .container > figure:nth-of-type(2):after {
+  content: "Pitza";
+}
+.gallery > .container > figure:nth-of-type(3):after {
+  content: "Main Dishes";
+}
+.gallery > .container > figure:nth-of-type(4):after {
+  content: "Dessert";
+}
+.gallery > .container > figure:nth-of-type(5):after {
+  content: "Coffee";
+}
+.gallery > .container > figure:nth-of-type(6):after {
+  content: "Shakes";
+}
+.gallery > .container > figure:hover::before {
+  opacity: 0;
+}
+.gallery > .container > figure:hover::after {
+  top: 350px;
+  color: darkgoldenrod;
+  width: 100%;
+}
+.gallery > .container > figure > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.gallery > .container > figure:nth-of-type(1) {
+  transform: rotateY(0deg) translateZ(500px) rotateX(20deg);
+}
+
+.gallery > .container > figure:nth-of-type(2) {
+  transform: rotateY(60deg) translateZ(500px) rotateX(20deg);
+}
+
+.gallery > .container > figure:nth-of-type(3) {
+  transform: rotateY(120deg) translateZ(500px) rotateX(20deg);
+}
+
+.gallery > .container > figure:nth-of-type(4) {
+  transform: rotateY(180deg) translateZ(500px) rotateX(20deg);
+}
+
+.gallery > .container > figure:nth-of-type(5) {
+  transform: rotateY(240deg) translateZ(500px) rotateX(20deg);
+}
+
+.gallery > .container > figure:nth-of-type(6) {
+  transform: rotateY(300deg) translateZ(500px) rotateX(20deg);
+}
+
+@keyframes rotation {
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}/*# sourceMappingURL=master3.css.map */

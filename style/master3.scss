@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(../pics/2Bap.gif);
+}
+
+$btest: 1px solid red;
+
+.gallery {
+    width: 100%;
+    // border: $btest;
+    perspective: 3000px;
+    margin-top: 60px;
+
+    >.container {
+        position: relative;
+        margin-top: 10px;
+        transform-style: preserve-3d;
+        animation: rotation 20s linear infinite;
+        transition: 1s;
+
+        &:hover {
+            animation-play-state: paused;
+            transform: none;
+        }
+
+        >figure {
+            width: 35%;
+            height: 350px;
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 32.5%;
+
+
+            &::before {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.404);
+                position: absolute;
+                top: 0;
+                left: 0;
+                transition: 0.6s;
+            }
+
+            &::after {
+                position: absolute;
+                width: 0;
+                height: 20%;
+                text-align: center;
+                color: white;
+                display: block;
+                // border: $btest;
+                background-color: rgba(0, 0, 0, 0.715);
+                top: 250px;
+                left: 0;
+                font-size: 50px;
+                padding-top: 20px;
+                transition-property: top, color;
+                transition-duration: 0.6s, 0.5s;
+                transition-delay: 0s, 0.6s;
+                z-index: -2;
+                overflow: hidden;
+
+            }
+
+            &:nth-of-type(1)::after {
+                content: 'Starter';
+            }
+
+            &:nth-of-type(2):after {
+                content: 'Pitza';
+            }
+
+            &:nth-of-type(3):after {
+                content: 'Main Dishes';
+            }
+
+            &:nth-of-type(4):after {
+                content: 'Dessert';
+            }
+
+            &:nth-of-type(5):after {
+                content: 'Coffee';
+            }
+
+            &:nth-of-type(6):after {
+                content: 'Shakes';
+            }
+
+            &:hover::before {
+                opacity: 0;
+            }
+
+            &:hover::after {
+                top: 350px;
+                color: darkgoldenrod;
+                width: 100%;
+            }
+
+            >img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+}
+
+@for $i from 1 through 6 {
+    .gallery>.container>figure:nth-of-type(#{$i}) {
+        transform: rotateY(#{$i*60-60}deg)translateZ(500px)rotateX(20deg);
+
+    }
+}
+
+@keyframes rotation {
+    from {
+        transform: rotateY(0);
+    }
+
+    to {
+        transform: rotateY(360deg);
+    }
+
+}
